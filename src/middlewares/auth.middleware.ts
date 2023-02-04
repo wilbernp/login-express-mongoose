@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { JwtPayload } from "jsonwebtoken";
+import { PayloadJWT } from "../types/auth";
 import jwtHandle from "../utils/jwt.handle";
 
 export default {
@@ -14,7 +14,7 @@ export default {
 
         try {
             const decoded = jwtHandle.verifyToken(token)
-            req.user = decoded as JwtPayload
+            req.user = decoded as PayloadJWT
             next()
         } catch (error) {
 
